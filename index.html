@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aventura Primaria</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Aventura Primaria">
+          <img src="assets/mascot.svg" alt="" />
+          <span>Aventura Primaria</span>
+        </a>
+        <div class="player-badge menu-only" aria-label="Personaje activo">
+          <span>Jugando como</span>
+          <strong id="menuPlayerName">Ari</strong>
+        </div>
+        <div class="top-actions" aria-label="Controles principales">
+          <button class="secondary-button compact-button menu-only" id="changeCharacter" type="button">Cambiar personaje</button>
+          <button class="icon-button" id="resetProgress" type="button" title="Reiniciar progreso" aria-label="Reiniciar progreso">
+            ↻
+          </button>
+          <button class="icon-button" id="soundToggle" type="button" title="Activar o desactivar sonido" aria-label="Activar sonido">
+            ♪
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero-panel menu-only" aria-labelledby="appTitle">
+          <div class="hero-copy">
+            <p class="eyebrow">5º y 6º de primaria</p>
+            <h1 id="appTitle">Retos rápidos para aprender jugando</h1>
+            <p>Elige curso y asignatura, responde a una tanda corta y gana estrellas por concentración, precisión y constancia.</p>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="planet planet-green"></div>
+            <div class="planet planet-coral"></div>
+            <img src="assets/mascot.svg" alt="" />
+          </div>
+        </section>
+
+        <section class="controls-band menu-only" aria-label="Elegir actividad">
+          <div class="field-group">
+            <span class="label">Curso</span>
+            <div class="segmented" role="group" aria-label="Curso">
+              <button class="segment active" type="button" data-grade="5">5º</button>
+              <button class="segment" type="button" data-grade="6">6º</button>
+            </div>
+          </div>
+
+          <div class="field-group stretch">
+            <span class="label">Asignatura</span>
+            <div class="subject-grid" role="group" aria-label="Asignatura">
+              <button class="subject active" type="button" data-subject="math">
+                <span class="subject-icon">÷</span>
+                <span>Matemáticas</span>
+              </button>
+              <button class="subject" type="button" data-subject="language">
+                <span class="subject-icon">Aa</span>
+                <span>Lengua</span>
+              </button>
+              <button class="subject" type="button" data-subject="science">
+                <span class="subject-icon">⚗</span>
+                <span>Ciencias</span>
+              </button>
+              <button class="subject" type="button" data-subject="english">
+                <span class="subject-icon">Hi</span>
+                <span>Inglés</span>
+              </button>
+              <button class="subject" type="button" data-subject="workbook">
+                <span class="subject-icon">✎</span>
+                <span>Cuaderno</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="avatar-panel" aria-labelledby="avatarTitle">
+          <div class="avatar-preview-wrap">
+            <div class="avatar-preview" id="avatarPreview" aria-hidden="true">
+              <div class="avatar-head">
+                <span class="avatar-hair"></span>
+                <span class="avatar-eye left"></span>
+                <span class="avatar-eye right"></span>
+                <span class="avatar-cheek left"></span>
+                <span class="avatar-cheek right"></span>
+                <span class="avatar-smile"></span>
+              </div>
+              <div class="avatar-body">
+                <span class="avatar-arm left"></span>
+                <span class="avatar-arm right"></span>
+                <span class="avatar-badge"></span>
+              </div>
+              <span class="avatar-foot left"></span>
+              <span class="avatar-foot right"></span>
+            </div>
+          </div>
+          <div class="avatar-controls">
+            <div>
+              <p class="panel-kicker">Tu aventura empieza aqui</p>
+              <h2 id="avatarTitle">Crea tu compi de viaje</h2>
+              <p class="avatar-intro">Elige colores, ponle nombre y guarda tu personaje para volver a jugar con el.</p>
+            </div>
+            <label class="name-field">
+              <span class="label">Nombre</span>
+              <input id="avatarName" type="text" maxlength="14" value="Ari" autocomplete="off" />
+            </label>
+            <div class="avatar-option-group" aria-label="Color de piel">
+              <span class="label">Piel</span>
+              <div class="swatches">
+                <button class="swatch" type="button" data-avatar-part="skin" data-avatar-value="#f2b184" style="--swatch: #f2b184" aria-label="Piel clara"></button>
+                <button class="swatch" type="button" data-avatar-part="skin" data-avatar-value="#c97c50" style="--swatch: #c97c50" aria-label="Piel media"></button>
+                <button class="swatch" type="button" data-avatar-part="skin" data-avatar-value="#8b573b" style="--swatch: #8b573b" aria-label="Piel oscura"></button>
+              </div>
+            </div>
+            <div class="avatar-option-group" aria-label="Color de pelo">
+              <span class="label">Pelo</span>
+              <div class="swatches">
+                <button class="swatch" type="button" data-avatar-part="hair" data-avatar-value="#20222b" style="--swatch: #20222b" aria-label="Pelo negro"></button>
+                <button class="swatch" type="button" data-avatar-part="hair" data-avatar-value="#7a4a25" style="--swatch: #7a4a25" aria-label="Pelo castaño"></button>
+                <button class="swatch" type="button" data-avatar-part="hair" data-avatar-value="#f6bf3a" style="--swatch: #f6bf3a" aria-label="Pelo rubio"></button>
+              </div>
+            </div>
+            <div class="avatar-option-group" aria-label="Color de traje">
+              <span class="label">Traje</span>
+              <div class="swatches">
+                <button class="swatch" type="button" data-avatar-part="suit" data-avatar-value="#3468d8" style="--swatch: #3468d8" aria-label="Traje azul"></button>
+                <button class="swatch" type="button" data-avatar-part="suit" data-avatar-value="#2f9a68" style="--swatch: #2f9a68" aria-label="Traje verde"></button>
+                <button class="swatch" type="button" data-avatar-part="suit" data-avatar-value="#ef705f" style="--swatch: #ef705f" aria-label="Traje coral"></button>
+              </div>
+            </div>
+            <div class="avatar-option-group" aria-label="Medalla">
+              <span class="label">Medalla</span>
+              <div class="badge-options">
+                <button class="badge-choice active" type="button" data-avatar-part="badge" data-avatar-value="★">★</button>
+                <button class="badge-choice" type="button" data-avatar-part="badge" data-avatar-value="✓">✓</button>
+                <button class="badge-choice" type="button" data-avatar-part="badge" data-avatar-value="+">+</button>
+              </div>
+            </div>
+            <button class="primary-button save-character" id="saveCharacter" type="button">Empezar aventura</button>
+            <div class="character-library" aria-label="Personajes guardados">
+              <span class="label">Personajes</span>
+              <div class="character-list" id="characterList"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="workspace menu-only">
+          <aside class="progress-panel" aria-label="Progreso">
+            <div class="companion-card">
+              <div class="mini-avatar" id="miniAvatar" aria-hidden="true">
+                <span class="mini-head"></span>
+                <span class="mini-body"></span>
+              </div>
+              <div>
+                <p class="panel-kicker">Te acompaña</p>
+                <h2 id="companionName">Ari</h2>
+              </div>
+            </div>
+            <div>
+              <p class="panel-kicker">Progreso</p>
+              <h2 id="progressTitle">Nivel explorador</h2>
+            </div>
+            <div class="star-row" id="starRow" aria-label="Estrellas conseguidas"></div>
+            <div class="meter">
+              <span id="meterFill"></span>
+            </div>
+            <dl class="stats">
+              <div>
+                <dt>Aciertos</dt>
+                <dd id="correctStat">0</dd>
+              </div>
+              <div>
+                <dt>Racha</dt>
+                <dd id="streakStat">0</dd>
+              </div>
+              <div>
+                <dt>Retos</dt>
+                <dd id="answeredStat">0</dd>
+              </div>
+            </dl>
+          </aside>
+
+          <section class="challenge-panel" aria-live="polite">
+            <div class="challenge-head">
+              <div>
+                <p class="panel-kicker" id="challengeMeta">Matemáticas · 5º</p>
+                <h2 id="questionTitle">Pregunta</h2>
+              </div>
+              <span class="pill" id="roundPill">1 de 10</span>
+            </div>
+
+            <div class="question-box">
+              <p id="questionText"></p>
+            </div>
+
+            <div class="answers" id="answers"></div>
+
+            <div class="feedback" id="feedback" hidden>
+              <strong id="feedbackTitle"></strong>
+              <p id="feedbackText"></p>
+            </div>
+
+            <section class="ai-tutor" aria-labelledby="aiTutorTitle">
+              <div class="ai-tutor-head">
+                <div>
+                  <p class="panel-kicker">Tutor IA</p>
+                  <h3 id="aiTutorTitle">Pide una ayuda</h3>
+                </div>
+                <span class="ai-status">modo guía</span>
+              </div>
+              <div class="ai-message" id="aiMessage">
+                Puedo darte una pista, explicarlo paso a paso o inventar un ejemplo parecido.
+              </div>
+              <div class="ai-actions" role="group" aria-label="Ayudas del tutor IA">
+                <button class="ai-button" type="button" data-ai-action="hint">Pista</button>
+                <button class="ai-button" type="button" data-ai-action="explain">Paso a paso</button>
+                <button class="ai-button" type="button" data-ai-action="example">Otro ejemplo</button>
+              </div>
+            </section>
+
+            <div class="challenge-actions">
+              <button class="secondary-button" id="newRound" type="button">Nueva tanda</button>
+              <button class="primary-button" id="nextQuestion" type="button" disabled>Siguiente</button>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+    <div class="creator-credit">creado por jcesteban (c)</div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
